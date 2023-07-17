@@ -1,0 +1,24 @@
+all: libPeri.a libArea.a
+
+libPeri.a: peri.o
+	ar -rc libPeri.a peri.o
+	ranlib libPeri.a
+
+libArea.a: area.o
+	ar -rc libArea.a area.o
+	ranlib libArea.a
+
+peri.o: peri.c
+	gcc -c peri.c
+
+area.o: area.c
+	gcc -c area.c
+
+install:
+	mkdir -p ./lib
+	mkdir -p ./include
+	mv *.h ./include
+	mv *.a ./lib
+
+clear:
+	rm *.o
